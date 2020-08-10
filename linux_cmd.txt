@@ -1,0 +1,261 @@
+#screen
+#shutdown screen session with application
+Ctrl-a + \
+#kill session
+Ctrl+a + k
+#detach screen session
+Ctrl-a + Ctrl-d
+#restore screen
+screen -r
+
+#A pid that's immune to hangup signal will keep on running even after you log out and hang up the phone. 
+nohup [command] - run <command>
+
+#samba shares list
+net usershare info --long
+#samba service
+sudo service smbd start / stop / restart / status
+
+# Ubuntu provides two different ways to create samba shares. One is  through smb.conf and the other is through Nautilus ( Files ) which creates the share definition in /var/lib/samba/usershares
+
+#samba add user
+adduser joe #ubuntu user lalan_netn_net t2d3k2kv43
+smbpasswd -a joe #samba user lan_net k2kv43
+#samba remove user
+smbpasswd -x joe
+userdel -r joe
+
+#Samba version and connections
+sudo smbstatus
+
+#java choose default JRE
+sudo update-alternatives --config java
+
+# PATH variable
+echo $PATH
+export PATH=$PATH:/opt/games
+
+#Find executables location in the system using $PATH
+which VBoxManage
+
+#set PATH variable in ~/.profile file
+if [ -d "$HOME/script" ] ; then
+    PATH="$HOME/script:$PATH"
+fi
+
+#execute file - same as source
+source .path
+
+# change shell directory from script file
+#!/bin/bash
+#Function needs to be executed in same process as shell. To do this sourced it in .bashrc file
+function cdJSON() {
+    echo Change directory to rfg-survey-apy/JSON called ...
+    cd ~/git/rfg-survey-api/JSON/
+}
+#source in .bashrc. Now cdJSON available in terminal
+. ~/script/cdJSON
+
+
+#Find program binary, source and manual location
+whereis VBox
+
+#check logs
+journalctl -eu docker
+
+#install gnome classic
+sudo apt install vanilla-gnome-desktop
+#useful extensions
+Dash to panel
+Arc menu
+
+#dpkg is the main package management program in Ubuntu.
+dpkg -c package.deb #displays content of package
+dpkg -s package.deb #checks installed or not
+dpkg -i package.deb #installs package
+dpkg -l #views specific package
+dpkg -l curl #list installed packages
+dpkg -r package #removes package 
+dpkg -L curl #shows install location 
+dpkg –help
+
+#apt
+apt help
+sudo apt install nmap #install
+sudo apt remove nmap #remove
+sudo apt update #updates local packages index from the repositories defined in the /etc/apt/sources.list file and in the /etc/apt/sources.list.d directory. 
+sudo apt upgrade #upgrades installed packages
+#Actions of the apt command, such as installation and removal of packages, are logged in the /var/log/dpkg.log log file.
+
+#Cron format:
+Minute(0-59) Hour(0-24) Day_of_month(1-31) Month(1-12) Day_of_week(0-6) Command_to_execute
+#Run cron job every 5 minute
+*/5 * * * * <command-to-execute>
+#Run a cron job every hour at 30 minutes
+30 * * * * <command-to-execute>
+#Run three times every hour, at minutes 0, 5 and 10:
+0,5,10 * * * * <command-to-execute>
+#Run a job on every day-of-week from Monday through Friday
+0 0 * * 1-5 <command-to-execute>
+#Cron strings to define jobs:
+@reboot, @yearly, @annually, @monthly, @weekly, @daily, @midnight, @hourly
+
+#tar
+tar [options] [archive-file] [file or directory to be archived]
+-c : Creates Archive
+-x : Extract the archive
+-f : creates archive with given filename
+-t : displays or lists files in archived file
+-u : archives and adds to an existing archive file
+-v : Displays Verbose Information
+-A : Concatenates the archive files
+-z : zip, tells tar command that create tar file using gzip
+-j : filter archive tar file using tbzip
+-W : Verify a archive file
+-r : update or add file or directory in already existed .tar file
+Creating an uncompressed tar Archive using option -cvf
+tar cvf file.tar *.c
+Extracting files from Archive using option -xvf
+tar xvf file.tar
+gzip compression on the tar Archive, using option -z
+tar cvzf file.tar.gz *.c
+Extracting a gzip tar Archive *.tar.gz using option -xvzf
+tar xvzf file.tar.gz
+
+mount HDD at system start
+sudo gedit /etc/fstab
+UUID=5C4AB2F44AB2CA52                     /media/pm/Data  ntfs    defaults   
+
+#isntall ssh
+sudo apt update
+sudo apt install openssh-server
+#service status
+service ssh status
+sudo service ssh stop
+sudo service ssh start
+#disable ssh
+sudo systemctl disable ssh
+sudo systemctl enable ssh
+#generate key to connect on ssh without password
+ssh-keygen -t rsa  
+#And then copy it to the remote machine:
+ssh-copy-id {username}@{host}
+
+#Sudo without password
+sudo nano /etc/sudoers  
+#And add the following to the end of the file where {username} is your username on the remote machine:
+{username}  ALL=(ALL) NOPASSWD:ALL
+
+#Process list:
+ps -A | less # q - exit
+ps -A | grep java
+ps -aux | grep java
+pstree
+
+#Grep exclude
+sudo locate tuxedo | grep -v /home
+#Grep seach in current and inner catalogs for file with text (ignore case). * asterisk not match hidden files!
+$ sudo grep -r -i “photo” *
+
+#Free hdd disk space
+df -m
+folder space used
+sudo du -h /var/lib/mysql/tuxedo/
+
+#Root terminal
+sudo su
+
+#PORT IN USE
+sudo netstat -peanut | grep ":8000 "
+sudo netstat -tulpn | grep LISTEN
+lsof -i :8000
+ps -fp 8000
+
+#Kill process
+kill 27964
+kill -9 27964 #will kill background either
+xkill #kills app in GUI
+
+#left working on background after logout ssh
+#run your process in the background (either use &, or ^Z then type bg) and disown
+$ wget --quiet http://server/some_big_file.zip & disown
+$ logout
+
+java -jar hotels-0.0.1-SNAPSHOT.jar --spring.profiles.active=development & disown
+
+# list background jobs
+jobs
+
+#Filesystem create catalog 
+mkdir
+
+#Access rights
+# - To change all the directories to 755 (drwxr-xr-x):
+find /opt/lampp/htdocs -type d -exec chmod 755 {} \;
+# - To change all the files to 644 (-rw-r--r--):
+find /opt/lampp/htdocs -type f -exec chmod 644 {} \;
+#One file 
+chmod 775 /path/to/file
+
+#Know pm user groups
+groups pm
+#Add user pm to group docker
+sudo usermod -aG docker pm
+#root terminal
+sudo su
+
+### MySQL ###
+mysql -u root -p
+> show databases;
+dump database
+~$ mysqldump --databases tuxedo > tuxedo.sql -u root -p
+~$ mysqldump -u root -p --no-data dbname > schema.sql
+
+disable constraints
+SET FOREIGN_KEY_CHECKS=0; -- to disable them
+SET FOREIGN_KEY_CHECKS=1; -- to re-enable them
+
+union
+select 'event', count(*) from event
+UNION select 'main_order', count(*) from main_order;
+
+#VNC
+#shift+tab fix: 
+xmodmap -e 'keycode 23 = Tab' #works until reboot
+#for permanent shift+tab fix edit /usr/share/X11/xkb/symbols/pcss
+change 
+    key  <TAB> {  [ Tab,  ISO_Left_Tab    ]   };
+to
+    key  <TAB> {  [ Tab                   ]   };
+and reboot
+
+### FIREBIRD ###
+URL TEMPLATE jdbc:firebirdsql://{host}:{port}/{file}
+gbak -c -v -user 'SYSDBA' -password '1' /home/pm/Downloads/EASYDATA.FBK '/home/pm/hello.fdb' -REP
+isql-fb
+SQL> CONNECT /home/pm/hello.fdb user SYSDBA password 1
+
+FLAME ROBIN no host name and port needed in server name
+
+#Canon LBP6000 Installation https://help.ubuntu.ru/wiki/canon_capt#%D0%BC%D0%B0%D1%82%D0%B5%D1%80%D0%B8%D0%B0%D0%BB%D1%8B_%D0%B4%D0%BB%D1%8F_%D0%B7%D0%B0%D0%B3%D1%80%D1%83%D0%B7%D0%BA%D0%B8
+
+#Ping and show lost packets
+ping -D -O 8.8.8.8
+
+#Get internet from laptop to Ubuntu PC
+1. On Ubuntu PC set gateway and DNS 192.168.[VM_IP]
+2. On laptop change ethernet gateway and DNS to 192.168.88.2 (It become unidentified network)
+3. On laptop start Intertelecom connection
+4. Run ubuntu 18.04 VM on laptop host (Python_3 -> [VM_IP])
+5. On VM run in terminal nm-connection-editor and set LAN connection IPv4 Method: Shared to other computers
+6. Ping to 192.168.[VM_IP] and 8.8.8.8 from Ubuntu PC should work now and internet too! If not - try reboot virtual machine or laptop and try once more.
+
+#To start Metatrader 4 install latest wine 
+sudo dpkg --add-architecture i386
+wget -qO - https://dl.winehq.org/wine-builds/winehq.key | sudo apt-key add -
+sudo apt-add-repository 'deb https://dl.winehq.org/wine-builds/ubuntu/ bionic main'
+sudo apt-get update
+sudo apt-get install --install-recommends winehq-stable
+wine --version
+wine-4.0.1
+#Than setup will go without proxy problem. You can use PlayOnLinux too
