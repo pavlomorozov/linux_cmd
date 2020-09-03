@@ -150,6 +150,7 @@ sudo nano /etc/sudoers
 ps -A | less # q - exit
 ps -A | grep java
 ps -aux | grep java
+ps -eo pid,comm,lstart,time,etime,args | grep java
 pstree
 
 #Grep exclude
