@@ -100,6 +100,9 @@ Minute(0-59) Hour(0-24) Day_of_month(1-31) Month(1-12) Day_of_week(0-6) Command_
 #Cron strings to define jobs:
 @reboot, @yearly, @annually, @monthly, @weekly, @daily, @midnight, @hourly
 
+#zip compress current folder recursively, quiet
+zip -rq deploy.zip ./*
+
 #tar
 tar [options] [archive-file] [file or directory to be archived]
 -c : Creates Archive
@@ -113,6 +116,8 @@ tar [options] [archive-file] [file or directory to be archived]
 -j : filter archive tar file using tbzip
 -W : Verify a archive file
 -r : update or add file or directory in already existed .tar file
+Create zip archive, but other programs cannot read it!
+tar -czvf deploy.zip ./* 
 Creating an uncompressed tar Archive using option -cvf
 tar cvf file.tar *.c
 Extracting files from Archive using option -xvf
@@ -189,6 +194,9 @@ jobs
 
 #Filesystem create catalog 
 mkdir
+
+#Filesystem remove file 
+rm /tmp/dellLaptopSerials.txt
 
 #Access rights
 # - To change all the directories to 755 (drwxr-xr-x):
