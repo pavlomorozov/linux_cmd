@@ -11,20 +11,22 @@ screen -r
 #A pid that's immune to hangup signal will keep on running even after you log out and hang up the phone. 
 nohup [command] - run <command>
 
-#samba shares list
+## samba ##
+# shares list
 net usershare info --long
-#samba service
+# connections status
+sudo smbstatus
+# service
 sudo service smbd start / stop / restart / status
-
+# config file location
+smbd -b | grep CONFIGFILE
 # Ubuntu provides two different ways to create samba shares. One is  through smb.conf and the other is through Nautilus ( Files ) which creates the share definition in /var/lib/samba/usershares
-
 #samba add user
 adduser joe #ubuntu user lalan_netn_net t2d3k2kv43
 smbpasswd -a joe #samba user lan_net k2kv43
 #samba remove user
 smbpasswd -x joe
 userdel -r joe
-
 #Samba version and connections
 sudo smbstatus
 
