@@ -17,7 +17,12 @@ cat /etc/passwd
 # list groups
 cat /etc/group
 
+# human readable colors for ls (added to .bashrc)
+alias lh='ls -alFh --color=none'
+
 ## samba ##
+# samba config explained in "man samba"
+/etc/samba/smb.conf
 # adds share (file in /var/lib/samba/usershares) 
 net usershare add Photo /mnt/DATA-HDD/Photo "Shared photos" everyone:F guest_ok=y
 # lists shares added with "net usershare add"
