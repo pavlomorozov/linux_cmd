@@ -20,8 +20,10 @@ cat /etc/group
 ## samba ##
 # adds share (file in /var/lib/samba/usershares) 
 net usershare add Photo /mnt/DATA-HDD/Photo "Shared photos" everyone:F guest_ok=y
-# lists shares
+# lists shares added with "net usershare add"
 net usershare info --long
+# list shares
+smbclient -NL localhost
 # connections status
 sudo smbstatus
 # service
