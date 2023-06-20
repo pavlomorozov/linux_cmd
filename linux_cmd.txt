@@ -1,3 +1,7 @@
+# Python VENV
+python3 -m venv venv
+source venv/bin/activate
+
 ## GIT
 # remove last commit
 git reset HEAD~
