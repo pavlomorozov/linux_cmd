@@ -1,3 +1,11 @@
+# Linux Mint - restart Cinnamon
+1. Hit ctrl+alt+esc
+2. Hit Alt+F2, type r, and press Enter
+3. Switch to another tty, for example tty6, by pressing Ctrl+Alt+F6
+   Run:
+   pkill -HUP -f "cinnamon --replace"
+   Return to tty8 by pressing Ctrl+Alt+F8
+
 # Python VENV
 python3 -m venv venv
 source venv/bin/activate
