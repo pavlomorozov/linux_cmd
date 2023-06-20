@@ -1,3 +1,9 @@
+## GIT
+# remove last commit
+git reset HEAD~
+# change the user email on reppository
+git config user.email "email@here.com"
+
 #screen
 #shutdown screen session with application
 Ctrl-a + \
