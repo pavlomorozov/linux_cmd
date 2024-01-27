@@ -13,8 +13,12 @@ source venv/bin/activate
 ## GIT
 # remove last commit
 git reset HEAD~
+# show git configuration
+git config --list
 # change the user email on reppository
 git config user.email "email@here.com"
+# set global git user name
+git config --global user.name "Full Name"
 
 #screen
 #shutdown screen session with application
