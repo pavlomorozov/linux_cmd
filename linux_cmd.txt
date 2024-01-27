@@ -20,6 +20,26 @@ git config user.email "email@here.com"
 # set global git user name
 git config --global user.name "Full Name"
 
+## PostgreSQL
+# backup
+$ pg_dump db_name > backup_file.sql -U postgres
+# login psql
+$ psql -U postgres -h localhost
+# restore backup
+postgres=# create database db_name;
+postgres=# select * from pg_database;
+$ psql -d value_screener < value_screener.20240127.sql -U postgres -h localhost
+# assign password for default user
+$ sudo su postgres
+$ psql
+\password postgres # enter new password twice
+# Error: FATAL: Peer authentication failed for user "postgres"
+# in file pg_hba.conf, replace
+# local   all             postgres                                peer
+# with
+# local   all             postgres                                md5
+sudo systemctl restart postgresql
+
 #screen
 #shutdown screen session with application
 Ctrl-a + \
