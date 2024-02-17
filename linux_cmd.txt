@@ -122,6 +122,8 @@ whereis VBox
 
 #check logs
 journalctl -eu docker
+# last 20 log entries
+var/log$ tail -20 auth.log
 
 #install gnome classic
 sudo apt install vanilla-gnome-desktop
