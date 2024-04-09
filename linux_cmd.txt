@@ -53,11 +53,13 @@ screen -r
 #A pid that's immune to hangup signal will keep on running even after you log out and hang up the phone. 
 nohup [command] - run <command>
 
-## Users ##
+## Linux Users ##
 # list users
 cat /etc/passwd
 # list groups
 cat /etc/group
+# change password
+passwd username
 
 # human readable colors for ls (added to .bashrc)
 alias lh='ls -alFh --color=none'
